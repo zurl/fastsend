@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+    <base target="_blank">
+    <title>Transfer a file</title>
+
+</head>
+
+<body>
+
+<div id="container">
+
+    <h1>Fast Send</h1>
+    <section>
+            <p> 1. input a token</p>
+            <p> 2. send a file or press recv button</p>
+    </section>
+
+    <section><div id ="statusdivrecv">recv: </div>
+        <div id ="statusdiv">send: </div>
+        <form id="fileInfo" onsubmit="return false">
+            <input type="text" id="token" name="token" placeholder="token"/>
+            <button id="join" disabled> recv </button>
+            <input type="file" id="fileInput" name="files" disabled/>
+        </form>
+
+        <div class="progress">
+            <div class="label">Send progress: </div>
+            <progress id="sendProgress" max="0" value="0"></progress>
+        </div>
+
+        <div class="progress">
+            <div class="label">Receive progress: </div>
+            <progress id="receiveProgress" max="0" value="0"></progress>
+        </div>
+
+        <div id="bitrate"></div>
+        <a id="download"></a>
+        <span id="status"></span>
+
+    </section>
+</div>
+
+<script >
+    function trace(arg) {
+    var now = (window.performance.now() / 1000).toFixed(3);
+    console.log(now + ': ', arg);
+    }
+</script>
+<script src="socket.io.js"></script>
+<script src="adapter.js"> </script>
+<script src="main.js"></script>
+<script src="receiver.js"></script>
+</body>
+</html>
